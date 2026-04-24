@@ -20,6 +20,15 @@ medassistant/
 ```
 
 ---
+## 📸 Screenshots
+
+<p align="center">
+  <img src="assets/knowledge-base.png" width="800"/>
+</p>
+
+<p align="center">
+  <img src="assets/chat-ui.png" width="800"/>
+</p>
 
 ## ⚙️ Setup & Run
 
