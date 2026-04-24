@@ -1,0 +1,128 @@
+[
+  {
+    "id": "1",
+    "category": "Fever",
+    "title": "Fever - Causes and When to Seek Care",
+    "content": "A fever is a temporary rise in body temperature, often due to an infection. Normal body temperature is around 98.6\u00b0F (37\u00b0C). A fever is generally 100.4\u00b0F (38\u00b0C) or higher. Common causes include viral infections (flu, cold, COVID-19), bacterial infections (strep throat, UTI, pneumonia), heat exhaustion, and certain medications. Symptoms accompanying fever include sweating, chills, headache, muscle aches, and fatigue. Seek emergency care if fever exceeds 103\u00b0F (39.4\u00b0C), lasts more than 3 days, or is accompanied by stiff neck, confusion, difficulty breathing, or rash.",
+    "source": "MedAssistant KB - General Medicine"
+  },
+  {
+    "id": "2",
+    "category": "Headache",
+    "title": "Headache Types and Management",
+    "content": "Headaches are one of the most common pain conditions. Tension headaches cause mild to moderate dull aching pain, often with tightness around the forehead. Migraines involve throbbing pain, usually on one side, with nausea, vomiting, and sensitivity to light and sound. Cluster headaches cause severe pain around one eye in cyclical patterns. Common triggers include stress, dehydration, lack of sleep, caffeine withdrawal, and certain foods. Management includes OTC pain relievers (ibuprofen, acetaminophen), rest, hydration, and cold/warm compresses. Seek emergency care for sudden severe 'thunderclap' headache, headache with fever and stiff neck, or after head injury.",
+    "source": "MedAssistant KB - Neurology"
+  },
+  {
+    "id": "3",
+    "category": "Common Cold",
+    "title": "Common Cold - Symptoms and Treatment",
+    "content": "The common cold is a viral infection of the upper respiratory tract. Symptoms include runny or stuffy nose, sore throat, cough, sneezing, mild headache, and low-grade fever. Colds are caused by rhinoviruses and spread through droplets. They typically last 7-10 days. Treatment is symptomatic: rest, fluids, saline nasal rinse, OTC decongestants, antihistamines, and throat lozenges. Antibiotics are ineffective against viral colds. See a doctor if symptoms worsen after 10 days, fever exceeds 103\u00b0F, or you develop chest pain or difficulty breathing.",
+    "source": "MedAssistant KB - General Medicine"
+  },
+  {
+    "id": "4",
+    "category": "Hypertension",
+    "title": "High Blood Pressure - Understanding and Managing Hypertension",
+    "content": "Hypertension (high blood pressure) is when blood pressure consistently reads 130/80 mmHg or higher. It is a major risk factor for heart disease and stroke. Categories: Normal <120/80, Elevated 120-129/<80, Stage 1: 130-139/80-89, Stage 2: 140+/90+. Risk factors include obesity, sedentary lifestyle, high sodium diet, smoking, excess alcohol, stress, family history, and age. Management includes lifestyle changes (DASH diet, regular exercise, weight loss, smoking cessation, limiting alcohol) and medications such as ACE inhibitors, ARBs, calcium channel blockers, and diuretics. Regular monitoring is essential.",
+    "source": "MedAssistant KB - Cardiology"
+  },
+  {
+    "id": "5",
+    "category": "Diabetes",
+    "title": "Diabetes Mellitus - Types, Symptoms and Management",
+    "content": "Diabetes is a chronic condition affecting how the body processes blood sugar (glucose). Type 1 is an autoimmune condition where the pancreas produces little or no insulin. Type 2 is the most common, where the body doesn't use insulin effectively. Symptoms include frequent urination, excessive thirst, unexplained weight loss, fatigue, blurred vision, slow-healing wounds, and frequent infections. Type 2 is managed with lifestyle changes (diet, exercise, weight loss), oral medications (metformin), and insulin if needed. Complications include heart disease, nerve damage, kidney disease, and vision problems. Regular blood sugar monitoring and A1C tests are critical.",
+    "source": "MedAssistant KB - Endocrinology"
+  },
+  {
+    "id": "6",
+    "category": "Chest Pain",
+    "title": "Chest Pain - Causes and Emergency Signs",
+    "content": "Chest pain has many causes ranging from benign to life-threatening. Cardiac causes include heart attack (myocardial infarction), angina, and pericarditis. Non-cardiac causes include GERD (acid reflux), costochondritis (rib cartilage inflammation), pleurisy, anxiety/panic attacks, and muscle strain. CALL 911 IMMEDIATELY for chest pain with: pain radiating to arm, jaw, or back; shortness of breath; cold sweats; nausea; or lightheadedness \u2014 these may indicate a heart attack. Do not drive yourself to the ER. Chew aspirin (if not allergic) while waiting for emergency services.",
+    "source": "MedAssistant KB - Emergency Medicine"
+  },
+  {
+    "id": "7",
+    "category": "Allergies",
+    "title": "Allergies - Types, Symptoms and Treatment",
+    "content": "Allergies occur when the immune system reacts to a harmless substance (allergen). Types include seasonal allergic rhinitis (hay fever), food allergies, skin allergies (eczema, contact dermatitis), drug allergies, and insect sting allergies. Symptoms vary: runny nose, sneezing, itchy eyes (hay fever); hives, swelling, vomiting (food allergy); redness, rash (skin allergy). Anaphylaxis is a severe, life-threatening allergic reaction requiring immediate epinephrine. Treatment includes antihistamines, nasal corticosteroids, decongestants, and allergen immunotherapy. Avoidance of known allergens is the first-line strategy.",
+    "source": "MedAssistant KB - Immunology"
+  },
+  {
+    "id": "8",
+    "category": "Back Pain",
+    "title": "Back Pain - Causes, Prevention and Treatment",
+    "content": "Back pain is one of the leading causes of disability worldwide. Acute back pain lasts less than 6 weeks; chronic pain persists longer. Common causes include muscle or ligament strain, herniated disc, arthritis, osteoporosis, and poor posture. Risk factors include age, lack of exercise, excess weight, improper lifting, and sedentary jobs. Most back pain improves with self-care: OTC pain relievers, heat/cold therapy, staying active, gentle stretching. Physical therapy, chiropractic care, and in some cases surgery are options for persistent pain. Seek immediate care for back pain with bladder/bowel dysfunction, leg weakness, or following trauma.",
+    "source": "MedAssistant KB - Orthopedics"
+  },
+  {
+    "id": "9",
+    "category": "Mental Health",
+    "title": "Anxiety and Depression - Recognizing and Seeking Help",
+    "content": "Anxiety disorders and depression are among the most common mental health conditions. Depression symptoms include persistent sadness, loss of interest, fatigue, sleep changes, appetite changes, difficulty concentrating, and thoughts of death or suicide. Anxiety symptoms include excessive worry, restlessness, fatigue, difficulty concentrating, irritability, muscle tension, and sleep problems. Treatments include psychotherapy (CBT is gold standard), medications (SSRIs, SNRIs), lifestyle changes (exercise, sleep hygiene, stress management), and support groups. If you or someone you know is in crisis, contact the 988 Suicide & Crisis Lifeline by calling or texting 988.",
+    "source": "MedAssistant KB - Psychiatry"
+  },
+  {
+    "id": "10",
+    "category": "COVID-19",
+    "title": "COVID-19 - Symptoms, Prevention and When to Seek Care",
+    "content": "COVID-19 is caused by the SARS-CoV-2 coronavirus. Symptoms range from mild to severe and include fever, cough, shortness of breath, fatigue, body aches, headache, loss of taste or smell, sore throat, runny nose, nausea, and diarrhea. Most people recover at home with rest, fluids, and OTC medications for symptom relief. High-risk groups (elderly, immunocompromised, those with chronic conditions) should consult a doctor about antiviral treatments. Prevention includes vaccination, wearing masks in high-transmission settings, hand hygiene, and ventilation. Seek emergency care for difficulty breathing, persistent chest pain, confusion, or bluish lips.",
+    "source": "MedAssistant KB - Infectious Disease"
+  },
+  {
+    "id": "11",
+    "category": "Digestive Health",
+    "title": "Common Digestive Issues - GERD, IBS, and Indigestion",
+    "content": "Digestive problems are extremely common. GERD (gastroesophageal reflux disease) causes heartburn, regurgitation, and chest discomfort due to stomach acid flowing back into the esophagus. IBS (irritable bowel syndrome) causes cramping, bloating, gas, diarrhea, and constipation without structural disease. Indigestion (dyspepsia) causes discomfort or pain in the upper abdomen. Management: GERD - avoid trigger foods, elevate bed head, antacids, H2 blockers, PPIs. IBS - dietary changes (low FODMAP diet), stress management, fiber, antispasmodics. Seek care for blood in stool, unexplained weight loss, persistent vomiting, or severe abdominal pain.",
+    "source": "MedAssistant KB - Gastroenterology"
+  },
+  {
+    "id": "12",
+    "category": "Sleep",
+    "title": "Sleep Disorders - Insomnia and Sleep Hygiene",
+    "content": "Sleep is vital for health. Adults need 7-9 hours per night. Insomnia involves difficulty falling or staying asleep and affects about 1 in 3 adults. Causes include stress, anxiety, depression, medications, caffeine, irregular schedules, and medical conditions. Sleep hygiene tips: maintain consistent sleep schedule, keep bedroom dark and cool, avoid screens before bed, limit caffeine after noon, avoid heavy meals near bedtime, exercise regularly (not close to bedtime). Treatments for chronic insomnia include Cognitive Behavioral Therapy for Insomnia (CBT-I, considered most effective), relaxation techniques, and short-term sleep medications. Sleep apnea requires medical evaluation and may need CPAP therapy.",
+    "source": "MedAssistant KB - Sleep Medicine"
+  },
+  {
+    "id": "13",
+    "category": "Uploaded",
+    "title": "Asthma",
+    "content": "Asthma - Symptoms, Triggers, and Treatment\n\nAsthma is a chronic respiratory condition in which the airways become inflamed, narrowed, and produce extra mucus, making it difficult to breathe. It affects people of all ages and is one of the most common long-term conditions worldwide.\n\nSymptoms of Asthma:\nThe most common symptoms include shortness of breath, wheezing (a whistling sound when breathing), chest tightness or pain, and persistent coughing especially at night or early morning. Symptoms can range from mild to severe and may vary from person to person.\n\nTypes of Asthma:\nAllergic asthma is triggered by allergens such as pollen, dust mites, mold, and pet dander. Non-allergic asthma is triggered by factors like stress, exercise, cold air, smoke, or respiratory infections. Exercise-induced asthma causes symptoms during or after physical activity. Occupational asthma is caused by workplace irritants such as chemical fumes or dust.\n\nCommon Triggers:\nAsthma triggers include allergens (pollen, dust mites, cockroaches, mold, pet dander), respiratory infections (colds, flu), air pollution, tobacco smoke, strong odors or chemical fumes, cold or dry air, physical exercise, stress and strong emotions, and certain medications like aspirin or beta-blockers.\n\nDiagnosis:\nDoctors diagnose asthma using spirometry (a breathing test measuring lung function), peak flow measurement, methacholine challenge test, allergy testing, and chest X-rays to rule out other conditions.\n\nTreatment and Management:\nAsthma has no cure but can be well-controlled with proper treatment. Quick-relief (rescue) inhalers such as albuterol are used during asthma attacks to relax airway muscles. Long-term control medications include inhaled corticosteroids (like fluticasone), long-acting beta-agonists, and leukotriene modifiers. Biologic therapies are available for severe asthma. An asthma action plan created with your doctor helps you know what to do when symptoms worsen.\n\nWhen to Seek Emergency Care:\nCall 911 or go to the emergency room immediately if you experience rapid worsening of shortness of breath, no improvement after using a rescue inhaler, shortness of breath even at rest, or bluish color to lips or fingernails (cyanosis).\n\nPrevention:\nIdentify and avoid personal triggers, take medications as prescribed, monitor breathing with a peak flow meter, get vaccinated for flu and pneumonia, and maintain regular follow-up appointments with your doctor.\n",
+    "source": "asthma.txt"
+  },
+  {
+    "id": "14",
+    "category": "a",
+    "title": "astama",
+    "content": "none",
+    "source": "User Added"
+  },
+  {
+    "id": "15",
+    "category": "Uploaded",
+    "title": "First Aid",
+    "content": "First Aid and Emergency Response Guide\n\nFirst aid is the immediate assistance given to a person suffering from illness or injury before professional medical help arrives. Knowing basic first aid can save lives.\n\nHeart Attack - Recognition and Response:\nSymptoms of a heart attack include chest pain or pressure, pain radiating to the arm jaw neck or back, shortness of breath, cold sweat, nausea, and lightheadedness. Call 911 immediately. Have the person sit or lie down in a comfortable position. If the person is not allergic to aspirin and can swallow, give them one regular aspirin (325mg) or four baby aspirins to chew. Loosen tight clothing. Begin CPR if the person becomes unresponsive and stops breathing normally.\n\nStroke - FAST Recognition:\nUse the FAST acronym. Face drooping - ask the person to smile, does one side droop? Arm weakness - ask the person to raise both arms, does one drift downward? Speech difficulty - ask them to repeat a simple phrase, is their speech slurred or strange? Time to call 911. Note the time symptoms started as this affects treatment options. Do not give food or water as stroke can impair swallowing.\n\nCPR (Cardiopulmonary Resuscitation):\nFor adults who are unresponsive and not breathing normally. Call 911 first or have someone else call while you begin CPR. Place the heel of your hand on the center of the chest. Place your other hand on top and interlace fingers. Push hard and fast at least 2 inches deep at a rate of 100 to 120 compressions per minute. If trained in CPR give 2 rescue breaths after every 30 compressions. Continue until professional help arrives or an AED becomes available.\n\nChoking - Heimlich Maneuver:\nFor a conscious adult who is choking and cannot speak cough or breathe. Stand behind the person and wrap your arms around their waist. Make a fist and place it just above the navel. Grasp your fist with your other hand and give quick upward thrusts. Repeat until the object is expelled or the person becomes unconscious. For an unconscious person lower them to the floor and begin CPR.\n\nSevere Bleeding:\nApply firm direct pressure to the wound using a clean cloth or bandage. Do not remove the cloth if it becomes soaked, add more on top. Maintain pressure for at least 15 minutes without peeking. For limb wounds a tourniquet may be needed if bleeding is life threatening. Elevate the injured area above heart level if possible. Call 911 for severe or uncontrolled bleeding.\n\nBurns:\nFor minor burns cool the burn under cool (not cold) running water for 10 to 20 minutes. Do not use ice butter or toothpaste. Cover with a clean non-fluffy material. Take over-the-counter pain relief if needed. Seek medical care for burns larger than 3 inches, burns on face hands feet genitals or major joints, deep burns, chemical or electrical burns, and burns in young children or elderly people.\n\nAllergic Reaction and Anaphylaxis:\nMild allergic reactions cause hives itching and mild swelling. Treat with antihistamines. Anaphylaxis is a severe life-threatening reaction causing throat swelling, difficulty breathing, rapid pulse, dizziness, and loss of consciousness. Use epinephrine auto-injector (EpiPen) immediately if available. Call 911 even after using epinephrine as symptoms can return. Lay the person flat with legs elevated unless they have breathing difficulty.\n\nFractures and Sprains:\nImmobilize the injured area. Do not attempt to realign the bone. Apply ice wrapped in cloth for 20 minutes at a time to reduce swelling. Elevate if possible. Seek medical evaluation for suspected fractures. For sprains use the RICE method - Rest, Ice, Compression with a bandage, Elevation.\n\nFainting:\nLay the person on their back and elevate their legs 12 inches if no head neck or spine injury is suspected. Loosen tight clothing. Check for breathing. If they do not regain consciousness within one minute call 911.\n",
+    "source": "first_aid.txt"
+  },
+  {
+    "id": "16",
+    "category": "aid",
+    "title": "first aid",
+    "content": "First aid is the immediate assistance given to a person suffering from illness or injury before professional medical help arrives. Knowing basic first aid can save lives.\n\nHeart Attack - Recognition and Response:\nSymptoms of a heart attack include chest pain or pressure, pain radiating to the arm jaw neck or back, shortness of breath, cold sweat, nausea, and lightheadedness. Call 911 immediately. Have the person sit or lie down in a comfortable position. If the person is not allergic to aspirin and can swallow, give them one regular aspirin (325mg) or four baby aspirins to chew. Loosen tight clothing. Begin CPR if the person becomes unresponsive and stops breathing normally.\n\nStroke - FAST Recognition:\nUse the FAST acronym. Face drooping - ask the person to smile, does one side droop? Arm weakness - ask the person to raise both arms, does one drift downward? Speech difficulty - ask them to repeat a simple phrase, is their speech slurred or strange? Time to call 911. Note the time symptoms started as this affects treatment options. Do not give food or water as stroke can impair swallowing.\n\nCPR (Cardiopulmonary Resuscitation):\nFor adults who are unresponsive and not breathing normally. Call 911 first or have someone else call while you begin CPR. Place the heel of your hand on the center of the chest. Place your other hand on top and interlace fingers. Push hard and fast at least 2 inches deep at a rate of 100 to 120 compressions per minute. If trained in CPR give 2 rescue breaths after every 30 compressions. Continue until professional help arrives or an AED becomes available.\n\nChoking - Heimlich Maneuver:\nFor a conscious adult who is choking and cannot speak cough or breathe. Stand behind the person and wrap your arms around their waist. Make a fist and place it just above the navel. Grasp your fist with your other hand and give quick upward thrusts. Repeat until the object is expelled or the person becomes unconscious. For an unconscious person lower them to the floor and begin CPR.\n\nSevere Bleeding:\nApply firm direct pressure to the wound using a clean cloth or bandage. Do not remove the cloth if it becomes soaked, add more on top. Maintain pressure for at least 15 minutes without peeking. For limb wounds a tourniquet may be needed if bleeding is life threatening. Elevate the injured area above heart level if possible. Call 911 for severe or uncontrolled bleeding.\n\nBurns:\nFor minor burns cool the burn under cool (not cold) running water for 10 to 20 minutes. Do not use ice butter or toothpaste. Cover with a clean non-fluffy material. Take over-the-counter pain relief if needed. Seek medical care for burns larger than 3 inches, burns on face hands feet genitals or major joints, deep burns, chemical or electrical burns, and burns in young children or elderly people.\n\nAllergic Reaction and Anaphylaxis:\nMild allergic reactions cause hives itching and mild swelling. Treat with antihistamines. Anaphylaxis is a severe life-threatening reaction causing throat swelling, difficulty breathing, rapid pulse, dizziness, and loss of consciousness. Use epinephrine auto-injector (EpiPen) immediately if available. Call 911 even after using epinephrine as symptoms can return. Lay the person flat with legs elevated unless they have breathing difficulty.\n\nFractures and Sprains:\nImmobilize the injured area. Do not attempt to realign the bone. Apply ice wrapped in cloth for 20 minutes at a time to reduce swelling. Elevate if possible. Seek medical evaluation for suspected fractures. For sprains use the RICE method - Rest, Ice, Compression with a bandage, Elevation.\n\nFainting:\nLay the person on their back and elevate their legs 12 inches if no head neck or spine injury is suspected. Loosen tight clothing. Check for breathing. If they do not regain consciousness within one minute call 911.",
+    "source": "User Added"
+  },
+  {
+    "id": "17",
+    "category": "Uploaded",
+    "title": "Nutrition",
+    "content": "Nutrition and Healthy Eating - A Complete Guide\n\nGood nutrition is essential for maintaining health, preventing disease, and supporting overall wellbeing. A balanced diet provides the body with essential nutrients including carbohydrates, proteins, fats, vitamins, minerals, and water.\n\nMacronutrients:\nCarbohydrates are the body's primary energy source. Choose complex carbohydrates like whole grains, legumes, fruits, and vegetables over refined sugars and white flour. Proteins are essential for building and repairing tissues, making enzymes and hormones. Good sources include lean meats, poultry, fish, eggs, dairy, beans, nuts, and seeds. Healthy fats support brain function, hormone production, and absorption of fat-soluble vitamins. Include sources like avocados, olive oil, nuts, seeds, and fatty fish.\n\nKey Vitamins and Minerals:\nVitamin D supports bone health and immune function. Sources include sunlight, fatty fish, fortified dairy, and eggs. Vitamin C is an antioxidant that supports immune health. Found in citrus fruits, bell peppers, and broccoli. Iron carries oxygen in the blood. Found in red meat, spinach, lentils, and fortified cereals. Calcium is essential for bone and teeth strength. Found in dairy products, leafy greens, and fortified plant milks. Potassium supports heart health and blood pressure. Found in bananas, potatoes, beans, and tomatoes.\n\nHealthy Eating Guidelines:\nFill half your plate with fruits and vegetables at every meal. Choose whole grains over refined grains. Limit added sugars, saturated fats, and sodium. Stay hydrated by drinking at least 8 glasses of water per day. Eat regular meals and avoid skipping breakfast. Control portion sizes to maintain a healthy weight. Limit processed and ultra-processed foods.\n\nSpecial Dietary Considerations:\nPeople with diabetes should monitor carbohydrate intake and choose low glycemic index foods. Those with high blood pressure benefit from the DASH diet which is low in sodium and rich in fruits, vegetables, and whole grains. People with celiac disease must strictly avoid gluten found in wheat, barley, and rye. Vegetarians and vegans should ensure adequate intake of vitamin B12, iron, calcium, omega-3 fatty acids, and zinc.\n\nNutrition and Disease Prevention:\nA healthy diet reduces the risk of heart disease, type 2 diabetes, obesity, certain cancers, and stroke. The Mediterranean diet, rich in fruits, vegetables, whole grains, legumes, fish, and olive oil, is consistently associated with better health outcomes and longevity.\n\nWhen to See a Dietitian:\nConsult a registered dietitian if you have a chronic disease requiring dietary management, need help with weight management, have food allergies or intolerances, are pregnant or breastfeeding, or have eating disorder concerns.\n",
+    "source": "nutrition.txt"
+  },
+  {
+    "id": "18",
+    "category": "n",
+    "title": "n",
+    "content": "n",
+    "source": "User Added"
+  }
+]

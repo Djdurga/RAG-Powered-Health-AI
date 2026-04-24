@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedAssistant — AI Health Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Variables ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #f0f4f0;
+      --surface:    #ffffff;
+      --surface2:   #f7faf7;
+      --border:     #d4e0d4;
+      --text:       #1a2e1a;
+      --text-mute:  #5a7a5a;
+      --accent:     #2d6a4f;
+      --accent2:    #52b788;
+      --accent-lt:  #d8f3dc;
+      --red:        #c0392b;
+      --red-lt:     #fdecea;
+      --amber:      #e67e22;
+      --amber-lt:   #fef3e2;
+      --user-bg:    #2d6a4f;
+      --user-text:  #ffffff;
+      --bot-bg:     #ffffff;
+      --radius:     14px;
+      --shadow:     0 2px 16px rgba(0,0,0,0.07);
+      --shadow-lg:  0 8px 40px rgba(0,0,0,0.12);
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ────────────────────────────────────────────────── */
+    .app {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      grid-template-rows: 100vh;
+      height: 100vh;
+    }
+
+    /* ── Sidebar ───────────────────────────────────────────────── */
+    .sidebar {
+      background: var(--accent);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .sidebar-header {
+      padding: 28px 24px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.18);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+
+    .logo-tag {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-nav {
+      padding: 20px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      letter-spacing: 1.2px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      padding: 8px 10px 4px;
+      text-transform: uppercase;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.75);
+      font-size: 14px;
+      font-weight: 400;
+      transition: all 0.18s;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+
+    .nav-item:hover { background: rgba(255,255,255,0.1); color: white; }
+    .nav-item.active { background: rgba(255,255,255,0.18); color: white; font-weight: 500; }
+    .nav-item .icon { font-size: 17px; width: 22px; text-align: center; }
+
+    .sidebar-footer {
+      padding: 16px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .disclaimer {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+      padding: 10px 12px;
+      background: rgba(0,0,0,0.15);
+      border-radius: 8px;
+    }
+
+    .disclaimer strong { color: rgba(255,255,255,0.75); }
+
+    /* ── Main Area ─────────────────────────────────────────────── */
+    .main {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Top Bar ───────────────────────────────────────────────── */
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .topbar-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-mute);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover { background: var(--surface2); color: var(--text); }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover { background: #255e44; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(45,106,79,0.3); }
+
+    /* ── Panel System ──────────────────────────────────────────── */
+    .panel { display: none; flex-direction: column; flex: 1; overflow: hidden; }
+    .panel.active { display: flex; }
+
+    /* ── Chat Panel ────────────────────────────────────────────── */
+    #chat-panel { flex-direction: column; }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    /* Welcome state */
+    .welcome {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 20px;
+      padding: 40px;
+      animation: fadeUp 0.5s ease;
+    }
+
+    .welcome-icon {
+      width: 72px;
+      height: 72px;
+      background: var(--accent-lt);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+    }
+
+    .welcome h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: var(--text);
+    }
+
+    .welcome p { color: var(--text-mute); max-width: 420px; font-size: 14px; }
+
+    .quick-questions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 520px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .quick-q {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text);
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.18s;
+      line-height: 1.4;
+    }
+
+    .quick-q:hover {
+      border-color: var(--accent2);
+      background: var(--accent-lt);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .quick-q .q-icon { font-size: 16px; margin-bottom: 4px; display: block; }
+
+    /* Message bubbles */
+    .message {
+      display: flex;
+      gap: 12px;
+      animation: fadeUp 0.3s ease;
+      max-width: 840px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user { flex-direction: row-reverse; align-self: flex-end; }
+    .message.bot  { align-self: flex-start; }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    .message.user .avatar { background: var(--user-bg); }
+    .message.bot  .avatar { background: var(--accent-lt); }
+
+    .bubble {
+      max-width: 680px;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      line-height: 1.65;
+      font-size: 14.5px;
+    }
+
+    .message.user .bubble {
+      background: var(--user-bg);
+      color: var(--user-text);
+      border-top-right-radius: 4px;
+    }
+
+    .message.bot .bubble {
+      background: var(--bot-bg);
+      border: 1px solid var(--border);
+      border-top-left-radius: 4px;
+      box-shadow: var(--shadow);
+    }
+
+    .bubble p + p { margin-top: 10px; }
+
+    /* Sources */
+    .sources {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sources-label {
+      font-size: 11px;
+      color: var(--text-mute);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 2px;
+    }
+
+    .source-chip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12.5px;
+      gap: 8px;
+    }
+
+    .source-info { flex: 1; }
+    .source-title { font-weight: 500; color: var(--text); }
+    .source-cat { color: var(--text-mute); font-size: 11.5px; }
+
+    .relevance-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-mute);
+    }
+
+    .bar-track {
+      width: 50px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--accent2);
+      border-radius: 2px;
+    }
+
+    /* Typing indicator */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 14px 18px;
+      background: var(--bot-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      border-top-left-radius: 4px;
+      box-shadow: var(--shadow);
+      width: fit-content;
+    }
+
+    .typing-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent2);
+      border-radius: 50%;
+      animation: bounce 1.2s infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30%           { transform: translateY(-6px); }
+    }
+
+    /* Emergency banner */
+    .emergency-banner {
+      background: var(--red-lt);
+      border: 1px solid #f5c6cb;
+      border-radius: 10px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    /* Chat input area */
+    .chat-input-area {
+      padding: 20px 28px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      background: var(--surface2);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 10px 14px;
+      transition: border-color 0.2s;
+    }
+
+    .input-row:focus-within { border-color: var(--accent2); box-shadow: 0 0 0 3px rgba(82,183,136,0.1); }
+
+    #chat-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      color: var(--text);
+      resize: none;
+      max-height: 140px;
+      min-height: 24px;
+      line-height: 1.5;
+    }
+
+    #chat-input::placeholder { color: var(--text-mute); }
+
+    .send-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent);
+      border: none;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.18s;
+    }
+
+    .send-btn:hover { background: #255e44; transform: translateY(-1px); }
+    .send-btn:disabled { background: var(--border); cursor: not-allowed; transform: none; }
+
+    .input-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 11.5px;
+      color: var(--text-mute);
+    }
+
+    /* ── KB Panel ──────────────────────────────────────────────── */
+    #kb-panel {
+      padding: 28px;
+      overflow-y: auto;
+      gap: 20px;
+    }
+
+    .kb-header { margin-bottom: 4px; }
+    .kb-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+    }
+    .kb-header p { color: var(--text-mute); font-size: 13.5px; margin-top: 4px; }
+
+    .upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--surface);
+    }
+
+    .upload-zone:hover, .upload-zone.dragover {
+      border-color: var(--accent2);
+      background: var(--accent-lt);
+    }
+
+    .upload-zone .upload-icon { font-size: 36px; margin-bottom: 10px; }
+    .upload-zone h3 { font-size: 15px; font-weight: 500; }
+    .upload-zone p { color: var(--text-mute); font-size: 13px; margin-top: 4px; }
+
+    .manual-add {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .manual-add h3 { font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+
+    .form-group { margin-bottom: 14px; }
+
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-mute);
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--surface2);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent2); }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .doc-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .doc-list-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-mute);
+      background: var(--surface2);
+    }
+
+    .doc-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .doc-item:last-child { border-bottom: none; }
+    .doc-item:hover { background: var(--surface2); }
+
+    .doc-badge {
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--accent-lt);
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .doc-info { flex: 1; }
+    .doc-title { font-size: 14px; font-weight: 500; }
+    .doc-source { font-size: 12px; color: var(--text-mute); margin-top: 2px; }
+
+    /* ── Notification toast ────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 13.5px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 999;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.error { background: var(--red); }
+
+    /* ── Responsive ────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .app { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .chat-messages { padding: 16px; }
+      .chat-input-area { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ── SIDEBAR ─────────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-icon">🏥</div>
+        <span class="logo-name">MedAssistant</span>
+      </div>
+      <div class="logo-tag">RAG-Powered Health AI</div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-label">Navigation</div>
+      <button class="nav-item active" onclick="switchPanel('chat')" id="nav-chat">
+        <span class="icon">💬</span> Chat Assistant
+      </button>
+      <button class="nav-item" onclick="switchPanel('kb')" id="nav-kb">
+        <span class="icon">📚</span> Knowledge Base
+      </button>
+
+      <div class="nav-label" style="margin-top:16px;">Quick Topics</div>
+      <button class="nav-item" onclick="askQuick('What are common symptoms of fever and when should I see a doctor?')">
+        <span class="icon">🌡️</span> Fever & Infections
+      </button>
+      <button class="nav-item" onclick="askQuick('Tell me about managing high blood pressure naturally')">
+        <span class="icon">❤️</span> Heart Health
+      </button>
+      <button class="nav-item" onclick="askQuick('What are the warning signs of diabetes?')">
+        <span class="icon">🩸</span> Diabetes
+      </button>
+      <button class="nav-item" onclick="askQuick('How can I improve my sleep quality?')">
+        <span class="icon">😴</span> Sleep Health
+      </button>
+      <button class="nav-item" onclick="askQuick('What are signs of anxiety or depression?')">
+        <span class="icon">🧠</span> Mental Health
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="disclaimer">
+        <strong>⚠️ Medical Disclaimer</strong><br/>
+        MedAssistant provides general health information only. Always consult a licensed healthcare professional for medical advice, diagnosis, or treatment.
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ───────────────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Top bar -->
+    <div class="topbar">
+      <div class="topbar-title" id="panel-title">Chat Assistant</div>
+      <div class="topbar-actions">
+        <button class="btn btn-ghost" onclick="clearChat()">🗑 Clear Chat</button>
+        <button class="btn btn-primary" onclick="switchPanel('kb')">+ Add Knowledge</button>
+      </div>
+    </div>
+
+    <!-- ── CHAT PANEL ─────────────────────────────────────────────── -->
+    <div class="panel active" id="chat-panel">
+      <div class="chat-messages" id="messages-container">
+        <!-- Welcome -->
+        <div class="welcome" id="welcome-screen">
+          <div class="welcome-icon">🩺</div>
+          <h2>How can I help you today?</h2>
+          <p>Ask me about symptoms, conditions, medications, or general health advice. I'll search the medical knowledge base and provide evidence-based answers.</p>
+          <div class="quick-questions">
+            <button class="quick-q" onclick="askQuick('What are the symptoms of common cold vs flu?')">
+              <span class="q-icon">🤧</span>Cold vs Flu symptoms
+            </button>
+            <button class="quick-q" onclick="askQuick('When should I go to the emergency room for chest pain?')">
+              <span class="q-icon">❤️</span>Chest pain — when is it serious?
+            </button>
+            <button class="quick-q" onclick="askQuick('How do I manage lower back pain at home?')">
+              <span class="q-icon">🦴</span>Managing back pain at home
+            </button>
+            <button class="quick-q" onclick="askQuick('What foods should I avoid if I have GERD or acid reflux?')">
+              <span class="q-icon">🍽️</span>GERD & acid reflux diet
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input area -->
+      <div class="chat-input-area">
+        <div class="input-row">
+          <textarea id="chat-input" placeholder="Describe your symptoms or ask a health question…" rows="1"
+            onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+          <button class="send-btn" id="send-btn" onclick="sendMessage()">➤</button>
+        </div>
+        <div class="input-footer">
+          <span>Press <kbd style="background:var(--border);padding:1px 5px;border-radius:4px;font-size:11px">Enter</kbd> to send, <kbd style="background:var(--border);padding:1px 5px;border-radius:4px;font-size:11px">Shift+Enter</kbd> for new line</span>
+          <span id="doc-count-chat">Loading KB…</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── KB PANEL ───────────────────────────────────────────────── -->
+    <div class="panel" id="kb-panel">
+
+      <div class="kb-header">
+        <h2>📚 Knowledge Base Manager</h2>
+        <p>Upload medical documents or manually add content to expand MedAssistant's knowledge.</p>
+      </div>
+
+      <!-- File upload -->
+      <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()"
+           ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+        <div class="upload-icon">📄</div>
+        <h3>Drop files here or click to upload</h3>
+        <p>Supports .txt and .json files with medical content</p>
+        <input type="file" id="file-input" accept=".txt,.json" style="display:none" onchange="uploadFile(event)" />
+      </div>
+
+      <!-- Manual add -->
+      <div class="manual-add">
+        <h3>✍️ Add Article Manually</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="doc-title" placeholder="e.g., Managing Type 2 Diabetes" />
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <input type="text" id="doc-category" placeholder="e.g., Endocrinology" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Content</label>
+          <textarea id="doc-content" placeholder="Paste or type the medical information here…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Source</label>
+          <input type="text" id="doc-source" placeholder="e.g., Mayo Clinic, WHO, Custom" />
+        </div>
+        <button class="btn btn-primary" onclick="addManualDoc()">Add to Knowledge Base</button>
+      </div>
+
+      <!-- Document list -->
+      <div class="doc-list">
+        <div class="doc-list-header" id="doc-list-header">📋 Current Articles (loading…)</div>
+        <div id="doc-list-body">
+          <div style="padding:24px;text-align:center;color:var(--text-mute)">Loading…</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Config ────────────────────────────────────────────────────────────────
+const API = '';  // relative — served from same origin
+
+// ── State ─────────────────────────────────────────────────────────────────
+let history = [];
+let welcomeVisible = true;
+let isLoading = false;
+
+// ── Panel Switching ───────────────────────────────────────────────────────
+function switchPanel(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(name + '-panel').classList.add('active');
+  document.getElementById('nav-' + name)?.classList.add('active');
+  const titles = { chat: 'Chat Assistant', kb: 'Knowledge Base' };
+  document.getElementById('panel-title').textContent = titles[name] || '';
+  if (name === 'kb') loadDocuments();
+}
+
+// ── Auto-resize textarea ──────────────────────────────────────────────────
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────
+function showToast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(() => t.className = 'toast', 3000);
+}
+
+// ── Quick Questions ───────────────────────────────────────────────────────
+function askQuick(text) {
+  switchPanel('chat');
+  document.getElementById('chat-input').value = text;
+  autoResize(document.getElementById('chat-input'));
+  sendMessage();
+}
+
+// ── Clear Chat ────────────────────────────────────────────────────────────
+function clearChat() {
+  history = [];
+  welcomeVisible = true;
+  const container = document.getElementById('messages-container');
+  container.innerHTML = `
+    <div class="welcome" id="welcome-screen">
+      <div class="welcome-icon">🩺</div>
+      <h2>How can I help you today?</h2>
+      <p>Ask me about symptoms, conditions, medications, or general health advice.</p>
+      <div class="quick-questions">
+        <button class="quick-q" onclick="askQuick('What are the symptoms of common cold vs flu?')">
+          <span class="q-icon">🤧</span>Cold vs Flu symptoms
+        </button>
+        <button class="quick-q" onclick="askQuick('When should I go to the emergency room for chest pain?')">
+          <span class="q-icon">❤️</span>Chest pain — when is it serious?
+        </button>
+        <button class="quick-q" onclick="askQuick('How do I manage lower back pain at home?')">
+          <span class="q-icon">🦴</span>Managing back pain at home
+        </button>
+        <button class="quick-q" onclick="askQuick('What foods should I avoid if I have GERD or acid reflux?')">
+          <span class="q-icon">🍽️</span>GERD & acid reflux diet
+        </button>
+      </div>
+    </div>`;
+}
+
+// ── Send Message ──────────────────────────────────────────────────────────
+async function sendMessage() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg || isLoading) return;
+
+  if (welcomeVisible) {
+    document.getElementById('welcome-screen')?.remove();
+    welcomeVisible = false;
+  }
+
+  isLoading = true;
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('send-btn').disabled = true;
+
+  const container = document.getElementById('messages-container');
+
+  // User bubble
+  container.insertAdjacentHTML('beforeend', `
+    <div class="message user">
+      <div class="avatar">👤</div>
+      <div class="bubble">${escapeHtml(msg)}</div>
+    </div>`);
+
+  // Typing indicator
+  const typingId = 'typing-' + Date.now();
+  container.insertAdjacentHTML('beforeend', `
+    <div class="message bot" id="${typingId}">
+      <div class="avatar">🩺</div>
+      <div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>`);
+
+  container.scrollTop = container.scrollHeight;
+
+  try {
+    const res = await fetch(API + '/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg, history })
+    });
+
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    const data = await res.json();
+
+    // Remove typing
+    document.getElementById(typingId)?.remove();
+
+    // Build sources HTML
+    let sourcesHtml = '';
+    if (data.sources && data.sources.length > 0) {
+      const chips = data.sources.map(s => `
+        <div class="source-chip">
+          <div class="source-info">
+            <div class="source-title">${escapeHtml(s.title)}</div>
+            <div class="source-cat">${escapeHtml(s.category)} · ${escapeHtml(s.source)}</div>
+          </div>
+          <div class="relevance-bar">
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.min(s.relevance, 100)}%"></div></div>
+            ${s.relevance}%
+          </div>
+        </div>`).join('');
+      sourcesHtml = `<div class="sources"><div class="sources-label">📎 Sources Used</div>${chips}</div>`;
+    }
+
+    // Emergency detection
+    const emergencyKeywords = ['call 911', 'emergency', 'immediately', 'seek emergency', 'chest pain', 'stroke', 'heart attack'];
+    const hasEmergency = emergencyKeywords.some(k => data.answer.toLowerCase().includes(k));
+    const emergencyHtml = hasEmergency ? `
+      <div class="emergency-banner">
+        🚨 <strong>If this is a medical emergency, call 911 or your local emergency number immediately.</strong>
+      </div>` : '';
+
+    container.insertAdjacentHTML('beforeend', `
+      <div class="message bot">
+        <div class="avatar">🩺</div>
+        <div>
+          ${emergencyHtml}
+          <div class="bubble">${formatAnswer(data.answer)}${sourcesHtml}</div>
+        </div>
+      </div>`);
+
+    history.push({ role: 'user', content: msg });
+    history.push({ role: 'assistant', content: data.answer });
+    if (history.length > 12) history = history.slice(-12);
+
+  } catch (err) {
+    document.getElementById(typingId)?.remove();
+    container.insertAdjacentHTML('beforeend', `
+      <div class="message bot">
+        <div class="avatar">🩺</div>
+        <div class="bubble" style="border-color:#f5c6cb;background:var(--red-lt);color:var(--red)">
+          ⚠️ Sorry, I couldn't connect to the server. Please make sure the backend is running on port 8000.<br/>
+          <small>${escapeHtml(err.message)}</small>
+        </div>
+      </div>`);
+  }
+
+  isLoading = false;
+  document.getElementById('send-btn').disabled = false;
+  container.scrollTop = container.scrollHeight;
+  input.focus();
+}
+
+// ── Format answer text ────────────────────────────────────────────────────
+function formatAnswer(text) {
+  return text
+    .split('\n\n')
+    .map(para => `<p>${para.replace(/\n/g, '<br/>')}</p>`)
+    .join('');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Document Loading ──────────────────────────────────────────────────────
+async function loadDocuments() {
+  try {
+    const res = await fetch(API + '/documents');
+    const data = await res.json();
+
+    document.getElementById('doc-list-header').textContent =
+      `📋 Current Articles (${data.count} total)`;
+    document.getElementById('doc-count-chat').textContent =
+      `Knowledge base: ${data.count} articles`;
+
+    const body = document.getElementById('doc-list-body');
+    body.innerHTML = data.documents.map(d => `
+      <div class="doc-item">
+        <span class="doc-badge">${escapeHtml(d.category)}</span>
+        <div class="doc-info">
+          <div class="doc-title">${escapeHtml(d.title)}</div>
+          <div class="doc-source">${escapeHtml(d.source)}</div>
+        </div>
+      </div>`).join('');
+  } catch (e) {
+    document.getElementById('doc-list-body').innerHTML =
+      '<div style="padding:20px;color:var(--red)">⚠️ Could not load documents — is the backend running?</div>';
+  }
+}
+
+// ── Manual Document Add ───────────────────────────────────────────────────
+async function addManualDoc() {
+  const title = document.getElementById('doc-title').value.trim();
+  const category = document.getElementById('doc-category').value.trim();
+  const content = document.getElementById('doc-content').value.trim();
+  const source = document.getElementById('doc-source').value.trim() || 'User Added';
+
+  if (!title || !category || !content) {
+    showToast('Please fill in title, category, and content.', true);
+    return;
+  }
+
+  const params = new URLSearchParams({ title, category, content, source });
+  try {
+    const res = await fetch(API + '/documents/upload?' + params.toString(), { method: 'POST' });
+    const data = await res.json();
+    showToast(`✅ Document added! Total: ${data.total} articles`);
+    ['doc-title','doc-category','doc-content','doc-source'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    loadDocuments();
+  } catch(e) {
+    showToast('Failed to add document: ' + e.message, true);
+  }
+}
+
+// ── File Upload ───────────────────────────────────────────────────────────
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('upload-zone').classList.add('dragover');
+}
+
+function handleDragLeave(e) {
+  document.getElementById('upload-zone').classList.remove('dragover');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  handleDragLeave(e);
+  const file = e.dataTransfer.files[0];
+  if (file) processFile(file);
+}
+
+function uploadFile(e) {
+  const file = e.target.files[0];
+  if (file) processFile(file);
+}
+
+async function processFile(file) {
+  const formData = new FormData();
+  formData.append('file', file);
+  try {
+    const res = await fetch(API + '/documents/upload-file', { method: 'POST', body: formData });
+    const data = await res.json();
+    showToast(`✅ ${data.message}`);
+    loadDocuments();
+  } catch(e) {
+    showToast('Upload failed: ' + e.message, true);
+  }
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+window.onload = () => {
+  loadDocuments();
+  document.getElementById('chat-input').focus();
+};
+</script>
+</body>
+</html>
